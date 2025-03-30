@@ -13,6 +13,7 @@ import { createNotifyMessageTool } from "./tools/notifyMessageTool.js";
 import { createUpdateComponentTool } from "./tools/updateComponentTool.js";
 import { createCreatePrefabTool } from "./tools/createPrefabTool.js";
 import { createInstantiatePrefabTool } from "./tools/instantiatePrefabTool.js";
+import { createUpdatePrefabTool } from "./tools/updatePrefabTool.js";
 import { createGetMenuItemsResource } from "./resources/getMenuItemResource.js";
 import { createGetConsoleLogsResource } from "./resources/getConsoleLogResource.js";
 import { createGetHierarchyResource } from "./resources/getHierarchyResource.js";
@@ -20,6 +21,7 @@ import { createGetPackagesResource } from "./resources/getPackagesResource.js";
 import { createGetAssetsResource } from "./resources/getAssetsResource.js";
 import { createGetTestsResource } from "./resources/getTestsResource.js";
 import { createGetGameObjectResource } from "./resources/getGameObjectResource.js";
+import { createGetPrefabsResource } from "./resources/getPrefabsResource.js";
 
 // Initialize loggers
 const serverLogger = new Logger("Server", LogLevel.INFO);
@@ -57,6 +59,7 @@ toolRegistry.add(createNotifyMessageTool(mcpUnity, toolLogger));
 toolRegistry.add(createUpdateComponentTool(mcpUnity, toolLogger));
 toolRegistry.add(createCreatePrefabTool(mcpUnity, toolLogger));
 toolRegistry.add(createInstantiatePrefabTool(mcpUnity, toolLogger));
+toolRegistry.add(createUpdatePrefabTool(mcpUnity, toolLogger));
 
 // Add all resources to the registry
 resourceRegistry.add(createGetMenuItemsResource(mcpUnity, resourceLogger));
@@ -66,6 +69,7 @@ resourceRegistry.add(createGetPackagesResource(mcpUnity, resourceLogger));
 resourceRegistry.add(createGetAssetsResource(mcpUnity, resourceLogger));
 resourceRegistry.add(createGetTestsResource(mcpUnity, resourceLogger));
 resourceRegistry.add(createGetGameObjectResource(mcpUnity, resourceLogger));
+resourceRegistry.add(createGetPrefabsResource(mcpUnity, resourceLogger));
 
 // Register all tools and resources with the MCP server
 toolRegistry.registerWithServer(server);

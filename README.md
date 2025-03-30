@@ -58,6 +58,7 @@ MCP Unity currently provides the following tools:
 - __**notify_message**__: Displays messages in the Unity Editor
 - __**create_prefab**__: Creates prefabs from existing GameObjects in the scene
 - __**instantiate_prefab**__: Instantiates prefabs into the scene
+- __**update_prefab**__: Modifies prefab properties and applies changes
 
 MCP Unity currently provides the following resources:
 
@@ -68,6 +69,7 @@ MCP Unity currently provides the following resources:
 - __**get_packages**__: Retrieves information about installed and available packages from the Unity Package Manager
 - __**get_assets**__: Retrieves information about assets in the Unity Asset Database
 - __**get_tests**__: Retrieves information about tests in the Unity Test Runner
+- __**get_prefabs**__: Retrieves a list of all prefabs in the project with their properties
 
 ## Requirements
 - Unity 2022.3 or later - to [install the server](#install-server)

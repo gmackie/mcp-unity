@@ -175,6 +175,12 @@ namespace McpUnity.Unity
             instantiatePrefabTool.Name = "instantiate_prefab";
             instantiatePrefabTool.Description = "Instantiates a prefab into the scene";
             _tools.Add(instantiatePrefabTool.Name, instantiatePrefabTool);
+            
+            // Register PrefabManagementTool for update_prefab
+            PrefabManagementTool updatePrefabTool = new PrefabManagementTool();
+            updatePrefabTool.Name = "update_prefab";
+            updatePrefabTool.Description = "Modifies prefab properties and applies changes";
+            _tools.Add(updatePrefabTool.Name, updatePrefabTool);
         }
         
         /// <summary>
@@ -209,6 +215,10 @@ namespace McpUnity.Unity
             // Register GetGameObjectResource
             GetGameObjectResource getGameObjectResource = new GetGameObjectResource();
             _resources.Add(getGameObjectResource.Name, getGameObjectResource);
+            
+            // Register GetPrefabsResource
+            GetPrefabsResource getPrefabsResource = new GetPrefabsResource();
+            _resources.Add(getPrefabsResource.Name, getPrefabsResource);
         }
         
         /// <summary>
