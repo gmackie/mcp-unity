@@ -163,6 +163,22 @@ namespace McpUnity.Unity
             // Register UpdateComponentTool
             UpdateComponentTool updateComponentTool = new UpdateComponentTool();
             _tools.Add(updateComponentTool.Name, updateComponentTool);
+            
+            // Register CreateSceneTool
+            CreateSceneTool createSceneTool = new CreateSceneTool();
+            _tools.Add(createSceneTool.Name, createSceneTool);
+            
+            // Register LoadSceneTool
+            LoadSceneTool loadSceneTool = new LoadSceneTool();
+            _tools.Add(loadSceneTool.Name, loadSceneTool);
+            
+            // Register SaveSceneTool
+            SaveSceneTool saveSceneTool = new SaveSceneTool();
+            _tools.Add(saveSceneTool.Name, saveSceneTool);
+            
+            // Register SwitchBuildScenesTool
+            SwitchBuildScenesTool switchBuildScenesTool = new SwitchBuildScenesTool();
+            _tools.Add(switchBuildScenesTool.Name, switchBuildScenesTool);
         }
         
         /// <summary>
@@ -197,6 +213,14 @@ namespace McpUnity.Unity
             // Register GetGameObjectResource
             GetGameObjectResource getGameObjectResource = new GetGameObjectResource();
             _resources.Add(getGameObjectResource.Name, getGameObjectResource);
+            
+            // Register GetScenesResource
+            GetScenesResource getScenesResource = new GetScenesResource();
+            _resources.Add(getScenesResource.Name, getScenesResource);
+            
+            // Register GetSceneInfoResource
+            GetSceneInfoResource getSceneInfoResource = new GetSceneInfoResource();
+            _resources.Add(getSceneInfoResource.Name, getSceneInfoResource);
         }
         
         /// <summary>

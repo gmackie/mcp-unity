@@ -18,6 +18,19 @@ namespace McpUnity.Unity
         private bool _isInitialized = false;
         private string _mcpConfigJson = "";
         private bool _tabsIndentationJson = false;
+        
+        // Foldout states for Help tab
+        private Vector2 _helpScrollPosition;
+        private bool _toolsFoldout = true;
+        private bool _gameObjectToolsFoldout = true;
+        private bool _prefabToolsFoldout = true;
+        private bool _sceneToolsFoldout = true;
+        private bool _otherToolsFoldout = true;
+        private bool _resourcesFoldout = true;
+        private bool _gameObjectResourcesFoldout = true;
+        private bool _prefabResourcesFoldout = true;
+        private bool _sceneResourcesFoldout = true;
+        private bool _otherResourcesFoldout = true;
 
         [MenuItem("Tools/MCP Unity/Server Window", false, 1)]
         public static void ShowWindow()
@@ -201,6 +214,9 @@ namespace McpUnity.Unity
 
         private void DrawHelpTab()
         {
+            // Begin scroll view
+            _helpScrollPosition = EditorGUILayout.BeginScrollView(_helpScrollPosition);
+            
             WrappedLabel("About MCP Unity", _subHeaderStyle);
             EditorGUILayout.BeginVertical(_boxStyle);
             WrappedLabel("MCP Unity is a Unity Editor integration of the Model Context Protocol (MCP), which enables standardized communication between AI models and applications.");
@@ -214,14 +230,188 @@ namespace McpUnity.Unity
             EditorGUILayout.EndVertical();
             
             EditorGUILayout.Space();
-            WrappedLabel("Available Tools", _subHeaderStyle);
             
-            EditorGUILayout.BeginVertical(_boxStyle);
+            // Tools Section with foldout
+            _toolsFoldout = EditorGUILayout.Foldout(_toolsFoldout, "Available Tools", true, EditorStyles.foldoutHeader);
+            if (_toolsFoldout)
+            {
+                EditorGUILayout.BeginVertical(_boxStyle);
+                
+                // GameObject Management Tools
+                _gameObjectToolsFoldout = EditorGUILayout.Foldout(_gameObjectToolsFoldout, "GameObject Management:", true);
+                if (_gameObjectToolsFoldout)
+                {
+                    EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+                    
+                    WrappedLabel("select_gameobject", EditorStyles.boldLabel);
+                    WrappedLabel("Selects game objects in the Unity hierarchy by path or instance ID");
+                    EditorGUILayout.Space();
+                    
+                    WrappedLabel("update_component", EditorStyles.boldLabel);
+                    WrappedLabel("Updates component fields on a GameObject or adds it to the GameObject if it does not contain the component");
+                    
+                    EditorGUILayout.EndVertical();
+                }
+                EditorGUILayout.Space();
+                
+                // Prefab Management Tools
+                _prefabToolsFoldout = EditorGUILayout.Foldout(_prefabToolsFoldout, "Prefab Management:", true);
+                if (_prefabToolsFoldout)
+                {
+                    EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+                    
+                    WrappedLabel("create_prefab", EditorStyles.boldLabel);
+                    WrappedLabel("Creates prefabs from existing GameObjects");
+                    EditorGUILayout.Space();
+                    
+                    WrappedLabel("instantiate_prefab", EditorStyles.boldLabel);
+                    WrappedLabel("Instantiates prefabs into the scene");
+                    EditorGUILayout.Space();
+                    
+                    WrappedLabel("update_prefab", EditorStyles.boldLabel);
+                    WrappedLabel("Modifies prefab properties and applies changes");
+                    
+                    EditorGUILayout.EndVertical();
+                }
+                EditorGUILayout.Space();
+                
+                // Scene Management Tools
+                _sceneToolsFoldout = EditorGUILayout.Foldout(_sceneToolsFoldout, "Scene Management:", true);
+                if (_sceneToolsFoldout)
+                {
+                    EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+                    
+                    WrappedLabel("create_scene", EditorStyles.boldLabel);
+                    WrappedLabel("Creates new scenes from scratch or based on templates");
+                    EditorGUILayout.Space();
+                    
+                    WrappedLabel("load_scene", EditorStyles.boldLabel);
+                    WrappedLabel("Loads existing scenes in the editor");
+                    EditorGUILayout.Space();
+                    
+                    WrappedLabel("save_scene", EditorStyles.boldLabel);
+                    WrappedLabel("Saves changes to scenes");
+                    EditorGUILayout.Space();
+                    
+                    WrappedLabel("switch_build_scenes", EditorStyles.boldLabel);
+                    WrappedLabel("Adds/removes scenes from the build settings and reorders them");
+                    
+                    EditorGUILayout.EndVertical();
+                }
+                EditorGUILayout.Space();
+                
+                // Other Tools
+                _otherToolsFoldout = EditorGUILayout.Foldout(_otherToolsFoldout, "Other Tools:", true);
+                if (_otherToolsFoldout)
+                {
+                    EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+                    
+                    WrappedLabel("execute_menu_item", EditorStyles.boldLabel);
+                    WrappedLabel("Executes a function that is currently tagged with MenuItem attribute in the project or in the Unity Editor's menu path");
+                    EditorGUILayout.Space();
+                    
+                    WrappedLabel("package_manager", EditorStyles.boldLabel);
+                    WrappedLabel("Installs, removes, and updates packages in the Unity Package Manager");
+                    EditorGUILayout.Space();
+                    
+                    WrappedLabel("run_tests", EditorStyles.boldLabel);
+                    WrappedLabel("Runs tests using the Unity Test Runner");
+                    EditorGUILayout.Space();
+                    
+                    WrappedLabel("notify_message", EditorStyles.boldLabel);
+                    WrappedLabel("Displays messages in the Unity Editor");
+                    
+                    EditorGUILayout.EndVertical();
+                }
+                
+                EditorGUILayout.EndVertical();
+            }
             
-            WrappedLabel("execute_menu_item", EditorStyles.boldLabel);
-            WrappedLabel("Executes a function that is currently tagged with MenuItem attribute in the project or in the Unity Editor's menu path");
+            EditorGUILayout.Space();
             
-            EditorGUILayout.EndVertical();
+            // Resources Section with foldout
+            _resourcesFoldout = EditorGUILayout.Foldout(_resourcesFoldout, "Available Resources", true, EditorStyles.foldoutHeader);
+            if (_resourcesFoldout)
+            {
+                EditorGUILayout.BeginVertical(_boxStyle);
+                
+                // GameObject Resources
+                _gameObjectResourcesFoldout = EditorGUILayout.Foldout(_gameObjectResourcesFoldout, "GameObject Resources:", true);
+                if (_gameObjectResourcesFoldout)
+                {
+                    EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+                    
+                    WrappedLabel("get_hierarchy", EditorStyles.boldLabel);
+                    WrappedLabel("Retrieves a list of all game objects in the Unity hierarchy");
+                    EditorGUILayout.Space();
+                    
+                    WrappedLabel("get_gameobject", EditorStyles.boldLabel);
+                    WrappedLabel("Retrieves detailed information about a specific GameObject by instance ID, including all GameObject components with its serialized properties and fields");
+                    
+                    EditorGUILayout.EndVertical();
+                }
+                EditorGUILayout.Space();
+                
+                // Prefab Resources
+                _prefabResourcesFoldout = EditorGUILayout.Foldout(_prefabResourcesFoldout, "Prefab Resources:", true);
+                if (_prefabResourcesFoldout)
+                {
+                    EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+                    
+                    WrappedLabel("get_prefabs", EditorStyles.boldLabel);
+                    WrappedLabel("Retrieves a list of all prefabs in the project with optional filtering");
+                    
+                    EditorGUILayout.EndVertical();
+                }
+                EditorGUILayout.Space();
+                
+                // Scene Resources
+                _sceneResourcesFoldout = EditorGUILayout.Foldout(_sceneResourcesFoldout, "Scene Resources:", true);
+                if (_sceneResourcesFoldout)
+                {
+                    EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+                    
+                    WrappedLabel("get_scenes", EditorStyles.boldLabel);
+                    WrappedLabel("Lists all scenes in the project with optional metadata");
+                    EditorGUILayout.Space();
+                    
+                    WrappedLabel("get_scene_info", EditorStyles.boldLabel);
+                    WrappedLabel("Retrieves detailed information about the current scene");
+                    
+                    EditorGUILayout.EndVertical();
+                }
+                EditorGUILayout.Space();
+                
+                // Other Resources
+                _otherResourcesFoldout = EditorGUILayout.Foldout(_otherResourcesFoldout, "Other Resources:", true);
+                if (_otherResourcesFoldout)
+                {
+                    EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+                    
+                    WrappedLabel("get_menu_items", EditorStyles.boldLabel);
+                    WrappedLabel("Retrieves a list of all available menu items in the Unity Editor");
+                    EditorGUILayout.Space();
+                    
+                    WrappedLabel("get_console_logs", EditorStyles.boldLabel);
+                    WrappedLabel("Retrieves a list of all logs from the Unity console");
+                    EditorGUILayout.Space();
+                    
+                    WrappedLabel("get_packages", EditorStyles.boldLabel);
+                    WrappedLabel("Retrieves information about installed and available packages from the Unity Package Manager");
+                    EditorGUILayout.Space();
+                    
+                    WrappedLabel("get_assets", EditorStyles.boldLabel);
+                    WrappedLabel("Retrieves information about assets in the Unity Asset Database");
+                    EditorGUILayout.Space();
+                    
+                    WrappedLabel("get_tests", EditorStyles.boldLabel);
+                    WrappedLabel("Retrieves information about tests in the Unity Test Runner");
+                    
+                    EditorGUILayout.EndVertical();
+                }
+                
+                EditorGUILayout.EndVertical();
+            }
             
             // Author information
             EditorGUILayout.Space();
@@ -251,6 +441,9 @@ namespace McpUnity.Unity
             EditorGUILayout.EndHorizontal();
             
             EditorGUILayout.EndVertical();
+            
+            // End scroll view
+            EditorGUILayout.EndScrollView();
         }
 
         #endregion
