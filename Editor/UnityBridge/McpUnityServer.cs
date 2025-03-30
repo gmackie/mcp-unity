@@ -163,6 +163,10 @@ namespace McpUnity.Unity
             // Register UpdateComponentTool
             UpdateComponentTool updateComponentTool = new UpdateComponentTool();
             _tools.Add(updateComponentTool.Name, updateComponentTool);
+            
+            // Register PrefabManagementTool
+            PrefabManagementTool prefabManagementTool = new PrefabManagementTool();
+            _tools.Add(prefabManagementTool.Name, prefabManagementTool);
         }
         
         /// <summary>
