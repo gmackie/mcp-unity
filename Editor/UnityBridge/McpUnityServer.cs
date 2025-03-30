@@ -164,22 +164,14 @@ namespace McpUnity.Unity
             UpdateComponentTool updateComponentTool = new UpdateComponentTool();
             _tools.Add(updateComponentTool.Name, updateComponentTool);
             
-            // Register PrefabManagementTool for create_prefab
-            PrefabManagementTool createPrefabTool = new PrefabManagementTool();
-            createPrefabTool.Name = "create_prefab";
-            createPrefabTool.Description = "Creates a prefab from an existing GameObject in the scene";
+            // Register individual prefab tools
+            CreatePrefabTool createPrefabTool = new CreatePrefabTool();
             _tools.Add(createPrefabTool.Name, createPrefabTool);
             
-            // Register PrefabManagementTool for instantiate_prefab
-            PrefabManagementTool instantiatePrefabTool = new PrefabManagementTool();
-            instantiatePrefabTool.Name = "instantiate_prefab";
-            instantiatePrefabTool.Description = "Instantiates a prefab into the scene";
+            InstantiatePrefabTool instantiatePrefabTool = new InstantiatePrefabTool();
             _tools.Add(instantiatePrefabTool.Name, instantiatePrefabTool);
             
-            // Register PrefabManagementTool for update_prefab
-            PrefabManagementTool updatePrefabTool = new PrefabManagementTool();
-            updatePrefabTool.Name = "update_prefab";
-            updatePrefabTool.Description = "Modifies prefab properties and applies changes";
+            UpdatePrefabTool updatePrefabTool = new UpdatePrefabTool();
             _tools.Add(updatePrefabTool.Name, updatePrefabTool);
         }
         
