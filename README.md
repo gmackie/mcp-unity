@@ -56,6 +56,8 @@ MCP Unity currently provides the following tools:
 - __**package_manager**__: Installs, removes, and updates packages in the Unity Package Manager
 - __**run_tests**__: Runs tests using the Unity Test Runner
 - __**notify_message**__: Displays messages in the Unity Editor
+- __**create_prefab**__: Creates prefabs from existing GameObjects in the scene
+- __**instantiate_prefab**__: Instantiates prefabs into the scene
 
 MCP Unity currently provides the following resources:
 
