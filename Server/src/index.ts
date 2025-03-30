@@ -12,6 +12,7 @@ import { createRunTestsTool } from "./tools/runTestsTool.js";
 import { createNotifyMessageTool } from "./tools/notifyMessageTool.js";
 import { createUpdateComponentTool } from "./tools/updateComponentTool.js";
 import { createCreatePrefabTool } from "./tools/createPrefabTool.js";
+import { createInstantiatePrefabTool } from "./tools/instantiatePrefabTool.js";
 import { createGetMenuItemsResource } from "./resources/getMenuItemResource.js";
 import { createGetConsoleLogsResource } from "./resources/getConsoleLogResource.js";
 import { createGetHierarchyResource } from "./resources/getHierarchyResource.js";
@@ -55,6 +56,7 @@ toolRegistry.add(createRunTestsTool(mcpUnity, toolLogger));
 toolRegistry.add(createNotifyMessageTool(mcpUnity, toolLogger));
 toolRegistry.add(createUpdateComponentTool(mcpUnity, toolLogger));
 toolRegistry.add(createCreatePrefabTool(mcpUnity, toolLogger));
+toolRegistry.add(createInstantiatePrefabTool(mcpUnity, toolLogger));
 
 // Add all resources to the registry
 resourceRegistry.add(createGetMenuItemsResource(mcpUnity, resourceLogger));
